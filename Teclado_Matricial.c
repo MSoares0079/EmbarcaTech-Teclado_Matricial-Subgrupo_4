@@ -3,6 +3,7 @@
 #include "hardware/pwm.h"
 
 #include "funcoes/Soma_BIN.c"
+#include "funcoes/PlaySong.c"
 
 #define ROWS 4  // Número de linhas
 #define COLS 4  // Número de colunas
@@ -42,25 +43,6 @@ char scan_keypad() {
     }
     return '\0';  // Retorna nulo se nenhuma tecla foi pressionada
 }
-//Função para fazer o Buzzer tocar som na frequência e tempo desejado
-void play_tone(uint pin, int frequency, int duration_ms) {
-    gpio_set_function(pin, GPIO_FUNC_PWM);  // Configura o pino para PWM
-    uint slice_num = pwm_gpio_to_slice_num(pin);  // Obtém o "slice" PWM do pino
-
-    pwm_config config = pwm_get_default_config();  // Configura PWM
-    pwm_config_set_clkdiv(&config, 4.0f);  // Ajusta a frequência base
-    pwm_init(slice_num, &config, true);  // Inicializa PWM no slice
-
-    // Calcula os parâmetros do PWM para a frequência desejada
-    uint32_t clock_freq = 125000000;  // Frequência do clock do sistema (125 MHz)
-    uint16_t wrap = clock_freq / (frequency * 4) - 1;
-    pwm_set_wrap(slice_num, wrap);
-    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(pin), wrap / 2);  // Duty cycle de 50%
-
-    sleep_ms(duration_ms);  // Aguarda o tempo desejado
-    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(pin), 0);  // Desliga o som
-    pwm_set_enabled(slice_num, false);  // Desabilita o PWM
-}
 
 int main() {
     stdio_init_all();
@@ -88,12 +70,15 @@ int main() {
                printf("Led verde aceso\n");
             }
             else if(key == 'D'){
-              play_tone(BUZZER, 440,1000);//Toca a nota A4(440 Hz) por 1s
+              play_note(BUZZER, 440,1000);//Toca a nota A4(440 Hz) por 1s
               printf("Buzzer tocando a nota Lá(440Hz) por 1s\n");
             } else if (key == '1') {
                 piscaBin_led(LED_VERDE, LED_AZUL, LED_VERMELHO);
                 printf("Leds piscando no formato de soma binaria\n");
-            } else{
+            } else if (key == '0') {
+                printf("Tocando a sequência: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó\n");
+                play_song(BUZZER); 
+            }else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
