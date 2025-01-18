@@ -95,8 +95,8 @@ int main() {
                 piscaBin_led(LED_VERDE, LED_AZUL, LED_VERMELHO);
                 printf("Leds piscando no formato de soma binaria\n");
             } else if (key == '0') {
-                play_song(BUZZER); 
                 printf("Tocando a sequência: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó\n");
+                play_song(BUZZER); 
             }else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
