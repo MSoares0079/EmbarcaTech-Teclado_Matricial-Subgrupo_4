@@ -2,6 +2,8 @@
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 
+#include "funcoes/Soma_BIN.c"
+
 #define ROWS 4  // Número de linhas
 #define COLS 4  // Número de colunas
 #define NUN_PERIFERICOS 4// Número de perifericos
@@ -88,8 +90,10 @@ int main() {
             else if(key == 'D'){
               play_tone(BUZZER, 440,1000);//Toca a nota A4(440 Hz) por 1s
               printf("Buzzer tocando a nota Lá(440Hz) por 1s\n");
-            }
-            else{
+            } else if (key == '1') {
+                piscaBin_led(LED_VERDE, LED_AZUL, LED_VERMELHO);
+                printf("Leds piscando no formato de soma binaria\n");
+            } else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
