@@ -3,6 +3,7 @@
 #include "hardware/pwm.h"
 
 #include "funcoes/Soma_BIN.c"
+#include "funcoes/PlaySong.c"
 
 #define ROWS 4  // Número de linhas
 #define COLS 4  // Número de colunas
@@ -93,7 +94,10 @@ int main() {
             } else if (key == '1') {
                 piscaBin_led(LED_VERDE, LED_AZUL, LED_VERMELHO);
                 printf("Leds piscando no formato de soma binaria\n");
-            } else{
+            } else if (key == '0') {
+                play_song(BUZZER); 
+                printf("Tocando a sequência: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó\n");
+            }else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
