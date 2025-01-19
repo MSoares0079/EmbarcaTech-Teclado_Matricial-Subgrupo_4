@@ -75,7 +75,14 @@ int main() {
             } else if (key == '1') {
                 piscaBin_led(LED_VERDE, LED_AZUL, LED_VERMELHO);
                 printf("Leds piscando no formato de soma binaria\n");
-            } else if (key == '0') {
+            } else if (key == '2'){
+                play_note(BUZZER, 262, 1000);
+                gpio_put(LED_VERMELHO, true);
+                gpio_put(LED_AZUL, true);
+                printf("Buzzer tocando a nota Dó e leds azul e vermelho ligados");
+            }
+
+            else if (key == '0') {
                 printf("Tocando a sequência: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó\n");
                 play_song(BUZZER); 
             }else{
