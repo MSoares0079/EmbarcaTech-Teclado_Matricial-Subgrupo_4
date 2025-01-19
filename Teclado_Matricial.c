@@ -88,8 +88,13 @@ int main() {
             } else if (key == 'B'){
                 printf("Enviando código SOS...\n");
                 sinal(LED_VERMELHO);
-            }
-            else{
+            } else if(key == '4'){
+                gpio_put(LED_VERMELHO,true);
+                printf("Led vermelho aceso\n");
+            } else if(key == '5'){
+                gpio_put(LED_AZUL,true);
+                printf("Led azul aceso\n");
+            } else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
