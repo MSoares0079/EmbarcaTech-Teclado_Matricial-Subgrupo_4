@@ -94,6 +94,10 @@ int main() {
             } else if(key == '5'){
                 gpio_put(LED_AZUL,true);
                 printf("Led azul aceso\n");
+            } else if(key == '3'){
+                apagar_led(LED_VERDE);
+                apagar_led(LED_VERMELHO);
+                apagar_led(LED_AZUL);
             } else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
