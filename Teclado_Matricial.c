@@ -4,7 +4,7 @@
 
 #include "funcoes/Soma_BIN.c"
 #include "funcoes/PlaySong.c"
-#include "funcoes/sos.c"
+#include "funcoes/sinal.c"
 
 #define ROWS 4  // Número de linhas
 #define COLS 4  // Número de colunas
@@ -87,14 +87,15 @@ int main() {
                 play_song(BUZZER); 
             } else if (key == 'B'){
                 printf("Enviando código SOS...\n");
-                sos();
+                sinal(LED_VERMELHO);
             }
             else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
-        
         sleep_ms(100);
     }
     return 0;
 }
+
+
