@@ -87,7 +87,7 @@ int main() {
                 play_song(BUZZER); 
             } else if (key == 'B'){
                 printf("Enviando código SOS...\n");
-                sinal();
+                sinal(13);
             }
             else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
