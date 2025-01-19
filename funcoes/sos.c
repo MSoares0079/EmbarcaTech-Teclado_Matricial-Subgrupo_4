@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 
-#define LED_PIN 13 
+int LED_PIN 13 
+
 #define gap 125    
 #define ponto 200  
 #define traco 800  

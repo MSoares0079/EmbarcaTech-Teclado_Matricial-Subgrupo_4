@@ -4,6 +4,7 @@
 
 #include "funcoes/Soma_BIN.c"
 #include "funcoes/PlaySong.c"
+#include "funcoes/sos.c"
 
 #define ROWS 4  // Número de linhas
 #define COLS 4  // Número de colunas
@@ -81,11 +82,14 @@ int main() {
                 gpio_put(LED_AZUL, true);
                 printf("Buzzer tocando a nota Dó e leds azul e vermelho ligados");
             }
-
             else if (key == '0') {
                 printf("Tocando a sequência: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó\n");
                 play_song(BUZZER); 
-            }else{
+            } else if (key == 'B'){
+                printf("Enviando código SOS...\n");
+                sos();
+            }
+            else{
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
