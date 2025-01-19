@@ -93,7 +93,6 @@ int main() {
                 printf("Nenhuma funcionalidade foi atribuida a essa tecla\n");
                }
             } 
-        
         sleep_ms(100);
     }
     return 0;
