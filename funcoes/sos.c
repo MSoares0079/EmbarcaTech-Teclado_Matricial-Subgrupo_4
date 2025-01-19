@@ -6,6 +6,7 @@
 #define ponto 200  
 #define traco 800  
 #define letras 250 
+                    
                             
 void sinal();                                    
 void blink_led(uint tempo);                     
